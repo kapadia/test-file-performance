@@ -1,0 +1,6 @@
+.DS_Store
+*.js
+lib/
+data/
+node_modules/
+*.fits
