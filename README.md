@@ -5,6 +5,6 @@ A little experiment to make I/O in the browser blazing fast!
 
 ## Setup
     
-    ./setup.sh
+    ./setup.sh  
     npm install
     npm start

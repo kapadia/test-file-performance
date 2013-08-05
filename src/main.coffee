@@ -29,7 +29,29 @@ onDrop = (e) ->
   readBinary(blob, 4)
 
 
-readBinary = (blob, nWorkers) ->
+readBinary = (blob) ->
+  startTime = new Date()
+  
+  # Create storage for blob
+  nElements = blob.size / 4
+  arr = new Float32Array(nElements)
+  
+  reader = new FileReader()
+  reader.onloadstart = (e) ->
+    console.log 'onloadstart'
+  reader.onload = (e) ->
+    console.log 'onload'
+  reader.onloadend = (e) ->
+    buffer = e.target.result
+    arr.set(new Float32Array(buffer), 0)
+    
+    endTime = new Date()
+    document.querySelector('.timer').textContent = "duration: #{endTime - startTime}"
+  
+  reader.readAsArrayBuffer(blob)
+  
+
+readBinary1 = (blob, nWorkers) ->
   
   # Start a rudimentary timer
   startTime = new Date()
